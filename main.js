@@ -1,21 +1,17 @@
-
 var massege = prompt("Введите текст который нужно очистить:")
-var isOk = true
-if (massege.length < 1) {
-    alert("Мы не сможем очистить пустое поле(")
-    isOk = false
-}
-for (var i = 0; i < massege.length; i++) {
-    if (massege[i] == "<") {
-        for (var next = 2; i + next < massege.length; next++) {
-            if (massege[i + next] == ">") {
-                massege = massege.slice(0, i) + massege.slice(i + next + 1)
-                break
-            }
-        }
+var res = ""
+
+var isDel = false
+for(char of massege){
+    if(char === "<"){
+        isDel = true
+    }
+    if(isDel === false){
+        res += char
+    }
+    if(char === ">"){
+        isDel = false
     }
 }
-console.log(massege)
-if (isOk) {
-    alert("Очищенный текст:"+ " " + massege)
-}
+console.log(res)
+alert("Очищенный текст:"+ " " + res)
